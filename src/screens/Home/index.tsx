@@ -9,9 +9,10 @@ import {
 } from "react-native";
 import { styles } from "./styles";
 import Participant from "../../components/Participant";
+import React from "react";
 
 export default function Home() {
-  const participants = [
+  /* const participants = [
     "Gabriel Ayres",
     "João Felipe",
     "Lucan Coutinho",
@@ -21,10 +22,19 @@ export default function Home() {
     "Arthur Rodrigues",
     "Miguel Rogério",
     "Luiz Felipe",
-  ];
+  ]; */
+  const [participants, setParticipants] = React.useState<string[]>([]);
+  const [participantName, setParticipantName] = React.useState("");
 
   function handleParticipantAdd() {
-    console.log("Clicou");
+    if (participants.includes(participantName))
+      return Alert.alert(
+        "Participants already exists",
+        "Participante já cadastrado!"
+      );
+
+    setParticipants((prevValue) => [...prevValue, participantName]);
+    setParticipantName("");
   }
 
   function handleParticipantRemove(name: string) {
@@ -49,6 +59,8 @@ export default function Home() {
           style={styles.input}
           placeholder="Nome do participante"
           placeholderTextColor="#6b6b6b"
+          value={participantName}
+          onChangeText={setParticipantName}
         />
 
         <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
