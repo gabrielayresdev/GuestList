@@ -41,7 +41,11 @@ export default function Home() {
     Alert.alert("Remove", `Deseja remover o participante ${name}?`, [
       {
         text: "Sim",
-        onPress: () => Alert.alert("Removido", "Removido"),
+        onPress: () => {
+          setParticipants((prevValue) =>
+            prevValue.filter((participant) => participant !== name)
+          );
+        },
       },
       {
         text: "Não",
