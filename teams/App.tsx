@@ -1,5 +1,11 @@
 import Groups from "@screens/Groups";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import theme from "@theme/index";
 import { ThemeProvider } from "styled-components";
 import {
@@ -14,6 +20,11 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
       {fontsLoaded ? <Groups /> : <Loading />}
     </ThemeProvider>
   );
