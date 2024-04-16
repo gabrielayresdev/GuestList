@@ -17,7 +17,11 @@ const NewGroup = () => {
           subtitle="crie a turma para adicionar as pessoas"
         />
 
-        <Input value={groupName} onChangeText={(text) => setGroupName(text)} />
+        <Input
+          value={groupName}
+          onChangeText={(text) => setGroupName(text)}
+          placeholder="Nome da turma"
+        />
 
         <Button title="Criar" style={{ marginTop: 20 }} />
       </Content>
