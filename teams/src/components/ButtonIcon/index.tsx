@@ -8,7 +8,7 @@ type Props = TouchableOpacityProps & {
   type?: ButtonIconTypeStyleProps;
 };
 
-export function ButtonIcon({ icon, type = "PRIMARY" }: Props) {
+export default function ButtonIcon({ icon, type = "PRIMARY" }: Props) {
   return (
     <Container>
       <Icon name={icon} type="PRIMARY" />
