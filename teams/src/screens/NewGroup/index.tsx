@@ -7,12 +7,12 @@ import Input from "@components/Input";
 import { useNavigation } from "@react-navigation/native";
 
 const NewGroup = () => {
-  const [groupName, setGroupName] = React.useState("");
+  const [group, setGroup] = React.useState("");
 
   const navigation = useNavigation();
 
   function handleNew() {
-    navigation.navigate("new");
+    navigation.navigate("players", { group });
   }
 
   return (
@@ -26,8 +26,8 @@ const NewGroup = () => {
         />
 
         <Input
-          value={groupName}
-          onChangeText={(text) => setGroupName(text)}
+          value={group}
+          onChangeText={setGroup}
           placeholder="Nome da turma"
         />
 
