@@ -4,9 +4,17 @@ import Header from "@components/Header";
 import Highlight from "@components/Highlight";
 import Button from "@components/Button";
 import Input from "@components/Input";
+import { useNavigation } from "@react-navigation/native";
 
 const NewGroup = () => {
   const [groupName, setGroupName] = React.useState("");
+
+  const navigation = useNavigation();
+
+  function handleNew() {
+    navigation.navigate("new");
+  }
+
   return (
     <Container>
       <Header showBackButton />
@@ -23,7 +31,7 @@ const NewGroup = () => {
           placeholder="Nome da turma"
         />
 
-        <Button title="Criar" style={{ marginTop: 20 }} />
+        <Button title="Criar" style={{ marginTop: 20 }} onPress={handleNew} />
       </Content>
     </Container>
   );

@@ -13,6 +13,7 @@ const Header = ({ showBackButton = false }: Props) => {
   function handleGoBack() {
     navigation.navigate("groups");
   }
+
   return (
     <Container>
       {showBackButton && (
