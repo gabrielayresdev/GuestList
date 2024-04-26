@@ -14,12 +14,14 @@ export async function playerAddByGroup(
     const playerAlreadyExists = storedPlayers.filter(
       (player) => player.name === newPlayer.name
     );
-    if (playerAlreadyExists) {
+    if (playerAlreadyExists.length > 0) {
       throw new AppError("Jogador já adicionado em um time.");
     }
 
     const storage = JSON.stringify([...storedPlayers, newPlayer]);
 
     await AsyncStorage.setItem(`${PLAYER_COLLECTION}-${group}`, storage);
-  } catch (error) {}
+  } catch (error) {
+    throw error;
+  }
 }
