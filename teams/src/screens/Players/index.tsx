@@ -77,6 +77,8 @@ export function Players() {
           value={playerName}
           onChangeText={setPlayerName}
           inputRef={InputRef}
+          onSubmitEditing={handleAddPlayers}
+          returnKeyLabel="done"
         />
         <ButtonIcon icon="add" onPress={() => handleAddPlayers()} />
       </Form>
