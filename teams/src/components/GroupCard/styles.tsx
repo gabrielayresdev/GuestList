@@ -1,4 +1,4 @@
-import { UsersThree } from "phosphor-react-native";
+import UsersThree from "phosphor-react-native/src/icons/UsersThree";
 import { TouchableOpacity } from "react-native";
 import styled, { css } from "styled-components/native";
 
