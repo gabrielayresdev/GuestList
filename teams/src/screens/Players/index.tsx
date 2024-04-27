@@ -16,6 +16,7 @@ import { playerAddByGroup } from "@storage/player/playerAddByGroup";
 import { playersGetByGroupAndTeam } from "@storage/player/playersGetByGroupAndTeam";
 import { PlayerStorageDTO } from "@storage/player/PlayerStorageDTO";
 import Input from "@components/Input";
+import { playerRemoveByGroup } from "@storage/player/playerRemoveByGroup";
 
 type RouteParams = {
   group: string;
@@ -57,6 +58,14 @@ export function Players() {
       setPlayers(playersByTeam);
     } catch (error) {
       console.log(error);
+    }
+  }
+  async function handlePlayersRemove(playerName: string) {
+    try {
+      await playerRemoveByGroup(playerName, group);
+      fetchPlayersbyTeam();
+    } catch (error) {
+      throw error;
     }
   }
 
@@ -105,7 +114,10 @@ export function Players() {
         data={players}
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
-          <PlayerCard name={item.name} onRemove={() => null} />
+          <PlayerCard
+            name={item.name}
+            onRemove={() => handlePlayersRemove(item.name)}
+          />
         )}
         ListEmptyComponent={() => (
           <ListEmpty message="Não há pessoas nesse time" />
